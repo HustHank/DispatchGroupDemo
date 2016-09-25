@@ -1,5 +1,5 @@
 # DispatchGroupDemo
-Demo to show how to user dispatch_group
+Demo to show how to use dispatch_group
 
 ###运行环境
 * Xcode: 7.3.1
