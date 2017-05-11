@@ -51,10 +51,9 @@
     
     [self showLoading];
     dispatch_group_t group = dispatch_group_create();
-
+    // group one
+    dispatch_group_enter(group);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        // group one
-        dispatch_group_enter(group);
         NSLog(@"group one start");
         NSURLSessionTask *task1 = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://img05.tooopen.com/images/20150202/sy_80219211654.jpg"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             UIImage *image = [UIImage imageWithData:data];
@@ -67,9 +66,9 @@
         [task1 resume];
     });
     
+    // group two
+    dispatch_group_enter(group);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        // group two
-        dispatch_group_enter(group);
         NSLog(@"group two start");
         NSURLSessionTask *task2 = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://img04.tooopen.com/images/20130701/tooopen_10055061.jpg"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             UIImage *image = [UIImage imageWithData:data];
